@@ -1,12 +1,14 @@
 package coinmachine;
+
 import java.util.Scanner;
 
+import java.util.Observer;
 /**
  * Console dialog for inserting coins into Coin machine.
  * @author James Brucker
  *
  */
-public class Demo {
+public class Demo  {
 	// create a java.util.Scanner object for use in all methods
 	private static Scanner console = new Scanner( System.in );
 	
@@ -54,6 +56,9 @@ public class Demo {
 	
 	/**
 	 * Run a console demo.
+	 * create coingui
+	 * create observergui
+	 * set observer
 	 * @param args not used
 	 */
 	public static void main(String[] args) {
@@ -62,7 +67,12 @@ public class Demo {
 		CoinMachine machine = new CoinMachine( capacity );
 		Demo demo = new Demo();
 		//TODO add observers
+		CoinGui coingui = new CoinGui(machine);
+		machine.addObserver(coingui);
+		ObserverGui observer = new ObserverGui(machine);
+		machine.addObserver(observer);
 		demo.insertDialog(machine);
+		
 	}
 }
 

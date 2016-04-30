@@ -1,8 +1,10 @@
 package coinmachine;
+
+
 /**
  * A Coin represents metalic money with a value.
  */
-public class Coin /*TODO implements Comparable<Coin> */ {
+public class Coin implements Comparable<Coin>  {
 	/** value of the coin */
 	private final int value;
 	private final String currency;
@@ -15,7 +17,7 @@ public class Coin /*TODO implements Comparable<Coin> */ {
 	public Coin(int value) {
 		this(value, "Baht");
 	}
-	
+
 	public Coin(int value, String currency) {
 		assert value > 0;  // if not, its YOUR fault
 		if (currency == null) throw new IllegalArgumentException("currency cannot be null");
@@ -29,13 +31,13 @@ public class Coin /*TODO implements Comparable<Coin> */ {
 	public int getValue() {
 		return value;
 	}
-	
+
 	/**
 	 * Get the coin's currency.
 	 * @return the currency of this coin.
 	 */
 	public String getCurrency() { return currency; }
-	
+
 
 	/**
 	 * Hashcode is used by collections like HashSet and HashMap.
@@ -59,11 +61,13 @@ public class Coin /*TODO implements Comparable<Coin> */ {
 	 * @param obj an Object to compare to this coin.
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
-	@Override
 	public boolean equals(Object obj) {
-//TODO Write a correct equals method for Coin.
-//     You can assume that the currency is never null.
-		return this == obj;
+		//TODO Write a correct equals method for Coin.
+		//     You can assume that the currency is never null.
+		if(!(obj instanceof Coin))
+			return false;
+		Coin coin = (Coin)obj;
+		return (this.getValue() == coin.getValue() && this.currency.equals(coin.getCurrency()));
 	}
 
 	/**
@@ -72,5 +76,10 @@ public class Coin /*TODO implements Comparable<Coin> */ {
 	@Override
 	public String toString() {
 		return value+"-"+currency;
+	}
+
+	@Override
+	public int compareTo(Coin o) {
+		return 0;
 	}
 }
