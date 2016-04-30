@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 public class ObserverGui extends JFrame implements Observer {
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField valueCoin;
 	private JTextField txtAcceptingCoins;
 	private CoinMachine machine;
 
@@ -40,13 +40,13 @@ public class ObserverGui extends JFrame implements Observer {
 		txtpncoins.setEditable(false);
 		contentPane.add(txtpncoins);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Lucida Grande", Font.PLAIN, 30));
-		textField.setText("0");
-		textField.setBounds(137, 6, 94, 36);
+		valueCoin = new JTextField();
+		valueCoin.setFont(new Font("Lucida Grande", Font.PLAIN, 30));
+		valueCoin.setText("0");
+		valueCoin.setBounds(137, 6, 94, 36);
 		
-		contentPane.add(textField);
-		textField.setColumns(10);
+		contentPane.add(valueCoin);
+		valueCoin.setColumns(10);
 		
 		txtAcceptingCoins = new JTextField();
 		txtAcceptingCoins.setFont(new Font("Lucida Grande", Font.PLAIN, 26));
@@ -62,7 +62,7 @@ public class ObserverGui extends JFrame implements Observer {
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
-		textField.setText("" + machine.getCount());
+		valueCoin.setText("" + machine.getCount());
 		
 	}
 

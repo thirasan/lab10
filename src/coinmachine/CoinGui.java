@@ -21,11 +21,11 @@ public class CoinGui extends JFrame implements Observer{
 	private JPanel contentPane;
 	private JTextField txtBalance;
 	private JTextField txtStatus;
-	private JButton btnNewButton;
-	private JButton btnNewButton_1;
-	private JButton button;
+	private JButton oneBahtButton;
+	private JButton fiveBahtButton;
+	private JButton tenBahtButton;
 	private CoinMachine machine;
-	final JProgressBar progressBar;
+	final JProgressBar valueBar;
 	/**
 	 * set gui
 	 * add coin when click coin picture
@@ -54,22 +54,22 @@ public class CoinGui extends JFrame implements Observer{
 		contentPane.add(txtStatus);
 		txtStatus.setColumns(10);
 		
-		progressBar = new JProgressBar();
-		progressBar.setStringPainted(true);
-		progressBar.setBounds(198, 6, 146, 20);
-		progressBar.setMaximum((int)machine.getCapacity());
-		progressBar.setMinimum(0);
-		contentPane.add(progressBar);
+		valueBar = new JProgressBar();
+		valueBar.setStringPainted(true);
+		valueBar.setBounds(198, 6, 146, 20);
+		valueBar.setMaximum((int)machine.getCapacity());
+		valueBar.setMinimum(0);
+		contentPane.add(valueBar);
 		
 		JTextPane txtpnInsertMoney = new JTextPane();
 		txtpnInsertMoney.setText("Insert Money");
 		txtpnInsertMoney.setBounds(6, 35, 81, 16);
 		contentPane.add(txtpnInsertMoney);
 		
-		btnNewButton = new JButton("");
-		btnNewButton.setIcon(new ImageIcon(CoinGui.class.getResource("/images/1baht.png")));
-		btnNewButton.setBounds(6, 56, 105, 93);
-		btnNewButton.addActionListener(new ActionListener() {
+		oneBahtButton = new JButton("");
+		oneBahtButton.setIcon(new ImageIcon(CoinGui.class.getResource("/images/1baht.png")));
+		oneBahtButton.setBounds(6, 56, 105, 93);
+		oneBahtButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Coin coin = new Coin(1,"Baht");
@@ -77,12 +77,12 @@ public class CoinGui extends JFrame implements Observer{
 				machine.insert(coin);
 			}
 		});
-		contentPane.add(btnNewButton);
+		contentPane.add(oneBahtButton);
 		
-		btnNewButton_1 = new JButton("");
-		btnNewButton_1.setIcon(new ImageIcon(CoinGui.class.getResource("/images/5baht.png")));
-		btnNewButton_1.setBounds(122, 56, 105, 93);
-		btnNewButton_1.addActionListener(new ActionListener() {
+		fiveBahtButton = new JButton("");
+		fiveBahtButton.setIcon(new ImageIcon(CoinGui.class.getResource("/images/5baht.png")));
+		fiveBahtButton.setBounds(122, 56, 105, 93);
+		fiveBahtButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Coin coin = new Coin(5,"Baht");
@@ -90,12 +90,12 @@ public class CoinGui extends JFrame implements Observer{
 				machine.insert(coin);
 			}
 		});
-		contentPane.add(btnNewButton_1);
+		contentPane.add(fiveBahtButton);
 		
-		button = new JButton("");
-		button.setIcon(new ImageIcon(CoinGui.class.getResource("/images/10baht.png")));
-		button.setBounds(239, 56, 105, 93);
-		button.addActionListener(new ActionListener() {
+		tenBahtButton = new JButton("");
+		tenBahtButton.setIcon(new ImageIcon(CoinGui.class.getResource("/images/10baht.png")));
+		tenBahtButton.setBounds(239, 56, 105, 93);
+		tenBahtButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Coin coin = new Coin(10,"Baht");
@@ -103,7 +103,7 @@ public class CoinGui extends JFrame implements Observer{
 				System.out.println("10-Baht inserted");
 			}
 		});
-		contentPane.add(button);
+		contentPane.add(tenBahtButton);
 		setVisible(true);
 		
 	}
@@ -116,6 +116,6 @@ public class CoinGui extends JFrame implements Observer{
 	@Override
 	public void update(Observable o, Object arg) {
 		txtBalance.setText("Balance : " + machine.getBalance());
-		progressBar.setValue(machine.getCount());
+		valueBar.setValue(machine.getCount());
 	}
 }
